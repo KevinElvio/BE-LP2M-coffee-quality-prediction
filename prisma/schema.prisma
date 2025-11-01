@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
@@ -18,7 +18,9 @@ model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String
-  photo_profile String?
+  password  String
+  role      String   @default("user")
+  photo_profile String? 
   history_predictions History[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
