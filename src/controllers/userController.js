@@ -1,4 +1,4 @@
-const { createUser, updateUser, allReadUser } = require('../models/userModel.js');
+const { createUser, updateUser, allReadUser, readUserById } = require('../models/userModel.js');
 const crypto = require('crypto-js/sha256.js');
 
 const registerUser = async (req, res) => {
@@ -32,6 +32,21 @@ const allUsers = async (req, res) => {
   }
 }
 
+const readUser = async (req, res) => {
+  try {
+    const {id} = req.params;
+    const data = await readUserById(id);
+    if(data.length === 0 | data === null){
+      return res.status(404).json({error: "User not found"}); 
+    }
+    return res.status(200).json({
+      data
+    })
+  } catch (error) {
+    return res.status(500).json({error : "[Internal server error] " + error.message})
+  }
+}
+
 const update = async (req, res) => {
   try {
     const { id } = req.params;
@@ -56,8 +71,12 @@ const update = async (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 };
+
+
 module.exports = {
   registerUser,
   allUsers,
-  update
+  update,
+  readUser
+
 }

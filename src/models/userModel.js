@@ -13,6 +13,13 @@ const allReadUser = async () => {
     return data;
 }
 
+const readUserById = async (id) => {
+    const data = await prisma.user.findFirst({
+        where: {id: parseInt(id)}
+    });
+    return data;
+}
+
 const updateUser = async (id, body) => {
     const data = await prisma.user.update({
         where: { id: parseInt(id) },
@@ -24,5 +31,6 @@ const updateUser = async (id, body) => {
 module.exports = {
     createUser,
     updateUser,
-    allReadUser
+    allReadUser,
+    readUserById
 };

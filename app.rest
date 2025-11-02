@@ -16,6 +16,10 @@ Content-Type: application/json
 GET {{baseUrl}}/api/users
 Content-Type: application/json
 
+### Read User By Id
+GET {{baseUrl}}/api/user/1
+Content-Type: application/json
+
 ### Update User
 PUT {{baseUrl}}/api/user/update/1
 Content-Type: application/json
