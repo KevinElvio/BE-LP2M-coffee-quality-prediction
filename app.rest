@@ -8,6 +8,15 @@ Content-Type: application/json
 
 {
     "name": "kevin",
-    "email": "kevin@gmail.com",
+    "email": "kevinw@gmail.com",
     "password": "rahasia"
+}
+
+### Update User
+PUT {{baseUrl}}/api/update/1
+Content-Type: application/json
+
+{
+    "name": "kevin update",
+    "email": "kevinww@gmail.com"
 }

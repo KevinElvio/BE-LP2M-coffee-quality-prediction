@@ -1,26 +1,50 @@
-const { createUser } = require ('../models/userModel.js');
+const { createUser, updateUser } = require('../models/userModel.js');
 const crypto = require('crypto-js/sha256.js');
 
 const registerUser = async (req, res) => {
-    try {
-        const { name, email, password } = req.body;
-        if (!name || !email || !password) {
-            return res.status(400).json({ error: "Name, email, and password are required" });
-        }
-        const user = {
-            name,
-            email,
-            password: crypto(password).toString()
-        };
-
-        const data = await createUser({user});
-        return res.status(201).json(data);
-    } catch (error) {
-        console.error("Error registering user:", error);
-        return res.status(500).json({ error: "Internal server error" });
+  try {
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: "Name, email, and password are required" });
     }
+    const user = {
+      name,
+      email,
+      password: crypto(password).toString()
+    };
+
+    const data = await createUser(user);
+    return res.status(201).json(data);
+  } catch (error) {
+    return res.status(500).json({ error: "Internal server error " + error.message });
+  }
 };
 
+const update = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, password } = req.body;
+
+    const userData = {};
+
+    if (name) {
+      userData.name = name;
+    }
+    if (email) {
+      userData.email = email;
+    }
+    if (password) {
+      userData.password = crypto.password
+    }
+
+    const data = await updateUser(id, userData);
+    return res.status(200).json(data);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
 module.exports = {
-    registerUser
+  registerUser,
+  update
 }

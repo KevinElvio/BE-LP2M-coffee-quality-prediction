@@ -4,5 +4,6 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 
 router.post('/api/register', userController.registerUser);
+router.put('/api/update/:id', userController.update);
 
 module.exports = router;
