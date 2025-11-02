@@ -28,9 +28,17 @@ const updateUser = async (id, body) => {
     return data;
 };
 
+const deleteUser = async(id) => {
+    const data = await prisma.user.delete({
+        where: {id: parseInt(id)}
+    })
+    return data;
+}
+
 module.exports = {
     createUser,
     updateUser,
     allReadUser,
-    readUserById
+    readUserById,
+    deleteUser
 };
