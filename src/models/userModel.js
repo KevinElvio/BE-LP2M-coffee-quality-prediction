@@ -8,6 +8,11 @@ const createUser = async (body) => {
     return data;
 };
 
+const allReadUser = async () => {
+    const data = await prisma.user.findMany();
+    return data;
+}
+
 const updateUser = async (id, body) => {
     const data = await prisma.user.update({
         where: { id: parseInt(id) },
@@ -18,5 +23,6 @@ const updateUser = async (id, body) => {
 
 module.exports = {
     createUser,
-    updateUser
+    updateUser,
+    allReadUser
 };

@@ -12,8 +12,12 @@ Content-Type: application/json
     "password": "rahasia"
 }
 
+### Read User
+GET {{baseUrl}}/api/users
+Content-Type: application/json
+
 ### Update User
-PUT {{baseUrl}}/api/update/1
+PUT {{baseUrl}}/api/user/update/1
 Content-Type: application/json
 
 {
