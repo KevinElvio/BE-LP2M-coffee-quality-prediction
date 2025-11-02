@@ -7,9 +7,9 @@ POST {{baseUrl}}/api/register
 Content-Type: application/json
 
 {
-    "name": "kevin",
-    "email": "kevinw@gmail.com",
-    "password": "rahasia"
+    "name": "kevin22",
+    "email": "kevinw2@gmail.com",
+    "password": "rahasia1"
 }
 
 ### Read User
@@ -28,3 +28,7 @@ Content-Type: application/json
     "name": "kevin update",
     "email": "kevinww@gmail.com"
 }
+
+### Delete User
+DELETE {{baseUrl}}/api/user/delete/6
+Content-Type: application/json
