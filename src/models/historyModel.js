@@ -3,7 +3,9 @@ const prisma = new PrismaClient();
 
 const readHistoryModel = async (id) => {
     const data = prisma.history.findMany({
-        where: id
+        where: {
+            userId : parseInt(id)
+        }
     })
     return data;
 }

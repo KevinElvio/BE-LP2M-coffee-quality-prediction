@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const userRoutes = require('./src/routes/userRoutes.js');
 const authRoutes = require('./src/routes/authRoutes.js');
+const historyRoutes = require('./src/routes/historyRoutes.js');
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 
 app.use('/', userRoutes);
 app.use('/', authRoutes);
+app.use('/', historyRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:${process.env.PORT}/`);

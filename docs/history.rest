@@ -1,0 +1,9 @@
+@baseUrl = http://localhost:4000
+
+{{baseUrl}}
+
+### History
+GET {{baseUrl}}/api/history/1
+Content-Type: application/json
+
+
