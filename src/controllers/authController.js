@@ -9,12 +9,12 @@ const login = async (req, res) => {
         const {email, password} = req.body;
         const foundUser = await allReadUser();
         if (!foundUser){
-            return res.status(404).json({error: "Gagal Login"})
+            return res.status(404).json({error: "Login Failed"})
         }
         for(i = 0; i <  foundUser.length; i++){
             if (email == foundUser[i].email && crypto(password).toString() == foundUser[i].password ){
                 return res.status(200).json({
-                    message: "login Berhasil",
+                    message: "Login Success",
                     data: foundUser[i],
                     token: jwt.sign(foundUser[i],process.env.SECRET_KEY, { expiresIn: '1h' } )
                 })
