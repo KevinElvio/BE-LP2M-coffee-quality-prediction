@@ -7,3 +7,14 @@ GET {{baseUrl}}/api/history/1
 Content-Type: application/json
 
 
+### Model Prediction(Token Required)
+POST {{baseUrl}}/api/history/7
+Content-Type: application/json
+
+{
+    "Aroma": 10,
+    "Flavor": 10,
+    "Aftertaste" : 10,
+    "Acidity" : 10,
+    "Sweetness" : 10
+}

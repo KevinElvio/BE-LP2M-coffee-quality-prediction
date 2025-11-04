@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 router.get('/api/history/:id', accessValidation, historyController.readHistoryController)
+router.post("/api/history/:id", historyController.generateController)
 
 
 module.exports = router;

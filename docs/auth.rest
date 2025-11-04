@@ -11,3 +11,6 @@ Content-Type: application/json
     "password": "rahasia"
 }
 
+### Logout
+POST {{baseUrl}}/api/logout
+Authorization: Bearer
