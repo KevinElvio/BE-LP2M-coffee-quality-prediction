@@ -1,7 +1,7 @@
 const { allReadUser } = require("../models/userModel")
 const crypto = require('crypto-js/sha256.js');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv').config()
+// const dotenv = require('dotenv').config()
 
 
 const login = async (req, res) => {
@@ -22,6 +22,14 @@ const login = async (req, res) => {
         }
     } catch (error) {
         return res.status(500).json({error: "Internal Server Error " + error.message})
+    }
+}
+
+const logout = async () => {
+    try {
+        
+    } catch (error) {
+        
     }
 }
 

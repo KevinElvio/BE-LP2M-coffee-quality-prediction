@@ -12,15 +12,17 @@ Content-Type: application/json
     "password": "rahasia1"
 }
 
-### Read User
+### Read User (Token Required)
 GET {{baseUrl}}/api/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJrZXZpbndAZ21haWwuY29tIiwibmFtZSI6ImtldmluMiIsInBhc3N3b3JkIjoiNTQxZTk4NDEwM2Q0MDk5YmI4MzgzMDUwYzU2ZDUxMWU3MzNkODVlNmFiODg5YTFjMzYzY2VkNjUxNzYyZWVlMCIsInJvbGUiOiJ1c2VyIiwicGhvdG9fcHJvZmlsZSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyNS0xMS0wMlQwNTo1OTo1OC40NjRaIiwidXBkYXRlZEF0IjoiMjAyNS0xMS0wMlQwNTo1OTo1OC40NjRaIiwiaWF0IjoxNzYyMjIyNjM5LCJleHAiOjE3NjIyMjYyMzl9.Q-mnFWjIfwnj0UPyW7vHZ93DkftnykfE4kzr6x055BA
+
 Content-Type: application/json
 
-### Read User By Id
+### Read User By Id (Token Required)
 GET {{baseUrl}}/api/user/1
 Content-Type: application/json
 
-### Update User
+### Update User (Token Required)
 PUT {{baseUrl}}/api/user/update/1
 Content-Type: application/json
 
@@ -29,6 +31,6 @@ Content-Type: application/json
     "email": "kevinww@gmail.com"
 }
 
-### Delete User
+### Delete User (Token Required)
 DELETE {{baseUrl}}/api/user/delete/6
 Content-Type: application/json
