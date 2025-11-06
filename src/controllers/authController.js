@@ -9,20 +9,31 @@ const jwt = require('jsonwebtoken');
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const foundUser = await allReadUser();
+        if (!email || !password) {
+            return res.status(400).json({ error: "Email and Password are required" })
+        }
+        const users = await allReadUser();
+        const hashedPassword = crypto(password).toString();
+
+        const foundUser = users.find(user =>
+            user.email === email && user.password === hashedPassword
+        );
+
         if (!foundUser) {
             return res.status(404).json({ error: "Login Failed" })
         }
+        
+        const { password: _, ...userWithoutPassword } = foundUser;
 
-        for (i = 0; i < foundUser.length; i++) {
-            if (email == foundUser[i].email && crypto(password).toString() == foundUser[i].password) {
-                return res.status(200).json({
-                    message: "Login Success",
-                    data: foundUser[i],
-                    token: jwt.sign(foundUser[i], process.env.SECRET_KEY, { expiresIn: '1h' })
-                })
-            }
-        }
+        return res.status(200).json({
+            message: "Login success",
+            data: userWithoutPassword,
+            token: jwt.sign(
+                { id: foundUser.id, email: foundUser.email },
+                process.env.SECRET_KEY,
+                { expiresIn: '1h' }
+            )
+        });
     } catch (error) {
         return res.status(500).json({ error: "Internal Server Error " + error.message })
     }
