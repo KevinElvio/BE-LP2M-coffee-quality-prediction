@@ -19,6 +19,8 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
+    "@libsql/client": "^0.15.15",
+    "@prisma/adapter-libsql": "^6.19.0",
     "@prisma/adapter-mariadb": "^6.18.0",
     "@prisma/client": "^6.18.0",
     "axios": "^1.13.1",
